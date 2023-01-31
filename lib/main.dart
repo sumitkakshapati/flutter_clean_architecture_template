@@ -22,10 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: LocaleKeys.appName.tr(),
       theme: ThemeData(
-        primaryColor: CustomTheme.primaryColor,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: CustomTheme.primaryColor,
-        ),
+        primarySwatch: CustomTheme.primaryColor,
       ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture_template/core/utils/color_utils.dart';
 
 class CustomTheme {
-  static const Color primaryColor  = Color(0xFF4649FF);
+  static MaterialColor primaryColor = const Color(0xFF4649FF).materialColor;
+}
+
+extension on Color {
+  MaterialColor get materialColor =>
+      ColorUtils.generateMaterialColor(color: this);
 }

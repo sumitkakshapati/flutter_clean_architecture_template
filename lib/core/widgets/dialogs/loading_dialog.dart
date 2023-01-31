@@ -24,7 +24,7 @@ class _LoadingDialog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const CupertinoActivityIndicator(
+          CupertinoActivityIndicator(
             color: CustomTheme.primaryColor,
           ),
           SizedBox(height: 10.hp),
