@@ -2,6 +2,7 @@
     "appName": "Template",
     "routeNotFound": "Route Not Found",
     "loading": "Loading",
+    "unexpectedErrorOccured": "Unexpected Error Occured",
     "auth": {
         "email": "Email",
         "password": "Password",

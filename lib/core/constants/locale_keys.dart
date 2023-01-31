@@ -2,6 +2,7 @@ class LocaleKeys {
   static String appName = "appName";
   static String routeNotFound = "routeNotFound";
   static String loading = "loading";
+  static String unexpectedErrorOccured = "unexpectedErrorOccured";
 
   // Auth
   static String email = "auth.email";

@@ -49,10 +49,12 @@ dependencies:
   hive_flutter: ^1.1.0
 
   # Api Connection
-  ferry_flutter: ^0.8.0
+  ferry: ^0.13.0
   gql_http_link: ^0.4.5
   gql_error_link: ^0.2.3+1
   gql_transform_link: ^0.2.2+1
+  gql_link: ^0.5.1
+  gql_exec: ^0.4.3
 
   # Function Programming
   dartz: ^0.10.1
@@ -75,6 +77,9 @@ dependencies:
 
   #Localization
   easy_localization: ^3.0.1
+
+  #Logs
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:
