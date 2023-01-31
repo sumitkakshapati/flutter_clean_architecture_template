@@ -1,4 +1,18 @@
 {
     "appName": "Template",
-    "routeNotFound": "Route Not Found"
+    "routeNotFound": "Route Not Found",
+    "loading": "Loading",
+    "auth": {
+        "email": "Email",
+        "password": "Password",
+        "phoneNumber": "Phone Number",
+        "confirmPassword": "Confirm Password"
+    },
+    "validationMessage": {
+        "pleaseEnterValidField": "Please eneter valid {}",
+        "fieldCannotBeEmpty": "{} field cannot be empty",
+        "invalidPasswordMessage": "Make sure your {} must be atLeast {} letters long.",
+        "doesnotMatch": "{} doesnot match",
+        "enterValidPhoneNumber": "Please enter valid phone number"
+    }
 }

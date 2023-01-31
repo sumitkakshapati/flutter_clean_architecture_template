@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_template/core/constants/locale_keys.dart';
 import 'package:flutter_clean_architecture_template/core/routes/route_generator.dart';
 import 'package:flutter_clean_architecture_template/core/routes/routes.dart';
+import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
 import 'package:flutter_clean_architecture_template/core/wrapper/localization_wrapper.dart';
 
 void main() async {
@@ -19,9 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: LocaleKey.appName.tr(),
+      title: LocaleKeys.appName.tr(),
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: CustomTheme.primaryColor,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: CustomTheme.primaryColor,
+        ),
       ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

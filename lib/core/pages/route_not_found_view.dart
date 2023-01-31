@@ -13,7 +13,7 @@ class RouteNotFoundView extends StatelessWidget {
       appBar: AppBar(),
       body: NoDataAvailable(
         image: Assets.notFound,
-        message: LocaleKey.routeNotFound.tr(),
+        message: LocaleKeys.routeNotFound.tr(),
       ),
     );
   }
