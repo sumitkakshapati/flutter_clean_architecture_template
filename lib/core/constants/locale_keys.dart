@@ -11,6 +11,7 @@ class LocaleKeys {
   static String confirmPassword = "auth.confirmPassword";
   static String login = "auth.login";
   static String loggedInSuccessfully = "auth.loggedInSuccessfully";
+  static String loggedOutSuccessfully = "auth.loggedOutSuccessfully";
 
   //Validation Message
   static const pleaseEnterValidField =

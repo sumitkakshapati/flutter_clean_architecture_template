@@ -9,7 +9,8 @@
         "phoneNumber": "Phone Number",
         "confirmPassword": "Confirm Password",
         "login": "Login",
-        "loggedInSuccessfully": "Logged In Successfully"
+        "loggedInSuccessfully": "Logged In Successfully",
+        "loggedOutSuccessfully": "Logged Out Successfully"
     },
     "validationMessage": {
         "pleaseEnterValidField": "Please eneter valid {}",
