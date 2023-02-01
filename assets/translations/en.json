@@ -7,7 +7,9 @@
         "email": "Email",
         "password": "Password",
         "phoneNumber": "Phone Number",
-        "confirmPassword": "Confirm Password"
+        "confirmPassword": "Confirm Password",
+        "login": "Login",
+        "loggedInSuccessfully": "Logged In Successfully"
     },
     "validationMessage": {
         "pleaseEnterValidField": "Please eneter valid {}",

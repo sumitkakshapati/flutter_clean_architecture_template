@@ -9,6 +9,8 @@ class LocaleKeys {
   static String password = "auth.password";
   static String phoneNumber = "auth.phoneNumber";
   static String confirmPassword = "auth.confirmPassword";
+  static String login = "auth.login";
+  static String loggedInSuccessfully = "auth.loggedInSuccessfully";
 
   //Validation Message
   static const pleaseEnterValidField =

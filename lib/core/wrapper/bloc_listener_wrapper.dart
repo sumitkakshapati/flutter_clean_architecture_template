@@ -38,6 +38,7 @@ class _BlocListenerWrapperState<B extends StateStreamable<CommonState>>
         } else if (state is! CommonLoadingState &&
             !widget.overrideLoading &&
             isLoading) {
+          isLoading = false;
           Navigator.pop(context);
         }
 
