@@ -17,10 +17,17 @@ class SplashBody extends StatelessWidget {
       body: BlocListener<StartUpCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonSuccessState<StartUpData>) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.login,
-              (_) => false,
-            );
+            if (state.data?.isLoggedIn ?? false) {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                Routes.dashboard,
+                (_) => false,
+              );
+            } else {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                Routes.login,
+                (_) => false,
+              );
+            }
           }
         },
         child: SizedBox(
