@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture_template/core/bloc/common_state.dart';
 import 'package:flutter_clean_architecture_template/core/constants/locale_keys.dart';
+import 'package:flutter_clean_architecture_template/core/routes/routes.dart';
 import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
 import 'package:flutter_clean_architecture_template/core/utils/form_validator.dart';
 import 'package:flutter_clean_architecture_template/core/utils/snackbar_utils.dart';
@@ -39,6 +40,10 @@ class _LoginBodyState extends State<LoginBody> {
               SnackBarUtils.showSuccessMessage(
                 context: context,
                 message: LocaleKeys.loggedInSuccessfully.tr(),
+              );
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                Routes.dashboard,
+                (route) => false,
               );
             }
           },
