@@ -12,6 +12,7 @@ class LoginInteractor
   final UserServices userServices;
 
   LoginInteractor({required this.userRepository, required this.userServices});
+  
   @override
   Future<Either<String, User>> call(LoginParam param) async {
     try {

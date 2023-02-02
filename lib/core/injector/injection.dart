@@ -1,3 +1,4 @@
+import 'package:flutter_clean_architecture_template/app/env.dart';
 import 'package:flutter_clean_architecture_template/core/database/database_service.dart';
 import 'package:flutter_clean_architecture_template/core/graphql/ferry_client.dart';
 import 'package:flutter_clean_architecture_template/core/graphql/graphql_impl.dart';
@@ -13,7 +14,11 @@ import 'package:get_it/get_it.dart';
 class DI {
   static final instance = GetIt.instance;
 
-  static Future<void> init() async {
+  static Future<void> init({required Env env}) async {
+    //Environment
+    //Register Environment Before calling api client
+    instance.registerSingleton<Env>(env);
+
     final ferryClient = FerryUtils.getFerryClient();
 
     //Databases
