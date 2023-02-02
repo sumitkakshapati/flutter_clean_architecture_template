@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:dartz/dartz.dart';
 import 'package:dartz_test/dartz_test.dart';
 import 'package:flutter_clean_architecture_template/core/services/user_services.dart';
 import 'package:flutter_clean_architecture_template/features/auth/domain/entities/param/login_param.dart';
