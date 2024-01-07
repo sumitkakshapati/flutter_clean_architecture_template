@@ -14,17 +14,15 @@ showLoadingDialog(BuildContext context) {
 }
 
 class _LoadingDialog extends StatelessWidget {
-  const _LoadingDialog({Key? key}) : super(key: key);
+  const _LoadingDialog();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
-    return WillPopScope(
-      onWillPop: () {
-        return Future.value(false);
-      },
+    return PopScope(
+      canPop: false,
       child: Dialog(
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 50),

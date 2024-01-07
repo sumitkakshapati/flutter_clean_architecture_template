@@ -11,12 +11,12 @@ class BlocBuilderWrapper<B extends StateStreamable<CommonState>>
   final bool overrideError;
   final B? bloc;
   const BlocBuilderWrapper({
-    Key? key,
+    super.key,
     required this.builder,
     this.overrideError = false,
     this.overrideLoading = false,
     this.bloc,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

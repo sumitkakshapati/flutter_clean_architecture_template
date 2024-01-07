@@ -32,9 +32,9 @@ class SplashBody extends StatelessWidget {
         },
         child: SizedBox(
           width: width,
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               FlutterLogo(
                 size: 150,
               ),

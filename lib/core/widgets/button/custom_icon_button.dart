@@ -8,14 +8,14 @@ class CustomIconButton extends StatelessWidget {
   final double borderRadius;
   final double padding;
   const CustomIconButton({
-    Key? key,
+    super.key,
     required this.icon,
     this.onPressed,
     this.backgroundColor = Colors.white,
     this.iconColor = Colors.black,
     this.borderRadius = 100,
     this.padding = 9,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

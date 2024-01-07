@@ -4,7 +4,7 @@ import 'package:flutter_clean_architecture_template/core/utils/size_utils.dart';
 
 class CustomRoundedButtom extends StatefulWidget {
   const CustomRoundedButtom({
-    Key? key,
+    super.key,
     required this.title,
     required this.onPressed,
     this.isDisabled = false,
@@ -18,7 +18,7 @@ class CustomRoundedButtom extends StatefulWidget {
     this.fontWeight = FontWeight.w700,
     this.horizontalMargin = 0,
     this.icon,
-  }) : super(key: key);
+  });
   final String title;
   final Function()? onPressed;
   final bool isDisabled;
@@ -72,7 +72,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                 children: [
                   Text(
                     widget.title,
-                    style: theme.textTheme.headline3!.copyWith(
+                    style: theme.textTheme.displaySmall!.copyWith(
                       fontWeight: widget.fontWeight,
                       color: widget.isDisabled
                           ? CustomTheme.grey.shade700

@@ -44,14 +44,14 @@ class CustomTextField extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: textTheme.headline6!.copyWith(
+                style: textTheme.titleLarge!.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
               ),
               if (isRequired)
                 Text(
                   " *",
-                  style: textTheme.headline6!.copyWith(
+                  style: textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w500,
                     color: Colors.red,
                   ),
@@ -60,7 +60,7 @@ class CustomTextField extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           TextFormField(
-            style: textTheme.headline6!.copyWith(
+            style: textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.w600,
             ),
             validator: validator,
@@ -83,13 +83,13 @@ class CustomTextField extends StatelessWidget {
                 vertical: 20,
                 horizontal: 12,
               ),
-              errorStyle: textTheme.bodyText2!.copyWith(
+              errorStyle: textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w400,
                 color: Colors.red,
               ),
               counterText: "",
               hintText: hintText,
-              hintStyle: textTheme.headline6!.copyWith(
+              hintStyle: textTheme.titleLarge!.copyWith(
                 color: CustomTheme.grey.shade200,
                 fontWeight: FontWeight.w400,
               ),

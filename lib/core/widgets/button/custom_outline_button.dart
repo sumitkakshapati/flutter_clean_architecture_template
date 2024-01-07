@@ -11,7 +11,7 @@ class CustomOutlineButton extends StatelessWidget {
   final FontWeight fontWeight;
 
   const CustomOutlineButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.onPressed,
     this.borderColor,
@@ -20,7 +20,7 @@ class CustomOutlineButton extends StatelessWidget {
     this.verticalPadding = 20,
     this.fontSize = 14,
     this.fontWeight = FontWeight.w700,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class CustomOutlineButton extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: textTheme.headline5!.copyWith(
+            style: textTheme.headlineSmall!.copyWith(
               fontWeight: fontWeight,
               fontSize: fontSize,
               color: textColor ?? theme.primaryColor,

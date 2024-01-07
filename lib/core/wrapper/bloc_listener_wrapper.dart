@@ -11,12 +11,12 @@ class BlocListenerWrapper<B extends StateStreamable<CommonState>>
   final bool overrideLoading;
   final bool overrideError;
   const BlocListenerWrapper({
-    Key? key,
+    super.key,
     required this.child,
     required this.listener,
     this.overrideError = false,
     this.overrideLoading = false,
-  }) : super(key: key);
+  });
 
   @override
   State<BlocListenerWrapper> createState() => _BlocListenerWrapperState<B>();
