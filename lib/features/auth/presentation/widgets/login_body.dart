@@ -32,7 +32,7 @@ class _LoginBodyState extends State<LoginBody> {
       appBar: AppBar(),
       body: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: CustomTheme.horizontalPadding,
+          horizontal: CustomTheme.pagePadding,
         ),
         child: BlocListenerWrapper<LoginCubit>(
           listener: (context, state) {

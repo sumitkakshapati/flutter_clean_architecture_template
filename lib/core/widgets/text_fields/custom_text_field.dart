@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
+import 'package:flutter_clean_architecture_template/core/theme/app_color_theme.dart';
+import 'package:flutter_clean_architecture_template/core/theme/app_text_theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final String label;
@@ -31,8 +32,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
+    final appTextTheme = Theme.of(context).extension<AppTextTheme>()!;
+    final appColorTheme = Theme.of(context).extension<AppColorTheme>()!;
 
     return Container(
       margin: EdgeInsets.only(bottom: bottomPadding),
@@ -44,59 +45,65 @@ class CustomTextField extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
+                style: appTextTheme.label,
               ),
               if (isRequired)
                 Text(
                   " *",
-                  style: textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.red,
+                  style: appTextTheme.label.copyWith(
+                    color: appColorTheme.warning.shade500,
                   ),
                 )
             ],
           ),
           const SizedBox(height: 12),
           TextFormField(
-            style: textTheme.titleLarge!.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+            style: appTextTheme.formInput,
             validator: validator,
             controller: controller,
-            cursorColor: CustomTheme.primaryColor,
+            cursorColor: appColorTheme.primary,
             maxLines: 1,
             keyboardType: TextInputType.text,
             obscureText: obscureText,
             readOnly: readOnly,
             onTap: onPressed,
             decoration: InputDecoration(
-              border: getBorder(false),
-              enabledBorder: getBorder(false),
-              focusedBorder: getBorder(false),
-              disabledBorder: getBorder(false),
-              errorBorder: getBorder(true),
+              border: getBorder(
+                isError: false,
+                colorTheme: appColorTheme,
+              ),
+              enabledBorder: getBorder(
+                isError: false,
+                colorTheme: appColorTheme,
+              ),
+              focusedBorder: getBorder(
+                isError: false,
+                colorTheme: appColorTheme,
+              ),
+              disabledBorder: getBorder(
+                isError: false,
+                colorTheme: appColorTheme,
+              ),
+              errorBorder: getBorder(
+                isError: true,
+                colorTheme: appColorTheme,
+              ),
               fillColor: Colors.white,
               filled: true,
               contentPadding: const EdgeInsets.symmetric(
                 vertical: 20,
                 horizontal: 12,
               ),
-              errorStyle: textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w400,
-                color: Colors.red,
+              errorStyle: appTextTheme.formhelper.copyWith(
+                color: appColorTheme.feedback,
               ),
               counterText: "",
               hintText: hintText,
-              hintStyle: textTheme.titleLarge!.copyWith(
-                color: CustomTheme.grey.shade200,
-                fontWeight: FontWeight.w400,
-              ),
+              hintStyle: appTextTheme.formInput,
               suffixIcon: Icon(
                 suffixIcon,
                 size: 26,
-                color: CustomTheme.grey,
+                color: appColorTheme.gray.shade500,
               ),
             ),
           ),
@@ -105,10 +112,15 @@ class CustomTextField extends StatelessWidget {
     );
   }
 
-  InputBorder getBorder(bool isError) {
+  InputBorder getBorder({
+    required bool isError,
+    required AppColorTheme colorTheme,
+  }) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: isError ? Colors.red : Colors.white),
+      borderSide: BorderSide(
+        color: isError ? colorTheme.feedback : colorTheme.borderElement,
+      ),
     );
   }
 }

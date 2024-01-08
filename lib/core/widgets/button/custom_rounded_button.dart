@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
+import 'package:flutter_clean_architecture_template/core/animations/tap_effect.dart';
+import 'package:flutter_clean_architecture_template/core/theme/app_color_theme.dart';
+import 'package:flutter_clean_architecture_template/core/theme/app_text_theme.dart';
 import 'package:flutter_clean_architecture_template/core/utils/size_utils.dart';
 
 class CustomRoundedButtom extends StatefulWidget {
@@ -12,12 +14,13 @@ class CustomRoundedButtom extends StatefulWidget {
     this.padding,
     this.color,
     this.horizontalPadding = 12,
-    this.verticalPadding = 20,
-    this.fontSize = 14,
-    this.textColor = Colors.white,
-    this.fontWeight = FontWeight.w700,
+    this.verticalPadding = 12.5,
+    this.fontSize = 16,
+    this.textColor,
+    this.fontWeight = FontWeight.w500,
     this.horizontalMargin = 0,
     this.icon,
+    this.iconColor,
   });
   final String title;
   final Function()? onPressed;
@@ -28,10 +31,11 @@ class CustomRoundedButtom extends StatefulWidget {
   final double horizontalPadding;
   final double verticalPadding;
   final double fontSize;
-  final Color textColor;
+  final Color? textColor;
   final FontWeight fontWeight;
   final double horizontalMargin;
   final IconData? icon;
+  final Color? iconColor;
 
   @override
   CustomRoundedButtomState createState() => CustomRoundedButtomState();
@@ -41,71 +45,77 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: widget.horizontalMargin),
-      child: Material(
-        color: widget.isDisabled
-            ? CustomTheme.grey.shade300
-            : (widget.color ?? theme.primaryColor),
-        borderRadius: BorderRadius.circular(12),
-        child: InkWell(
-          onTap: widget.isDisabled ? null : widget.onPressed,
-          borderRadius: BorderRadius.circular(12),
-          child: Container(
-            padding: widget.padding ??
-                EdgeInsets.symmetric(
-                  vertical: widget.verticalPadding,
-                  horizontal: widget.horizontalPadding,
-                ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: widget.isDisabled
-                  ? null
-                  : Border.all(
-                      color: widget.color ?? theme.primaryColor,
-                    ),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.title,
-                    style: theme.textTheme.displaySmall!.copyWith(
-                      fontWeight: widget.fontWeight,
-                      color: widget.isDisabled
-                          ? CustomTheme.grey.shade700
-                          : widget.textColor,
-                      fontSize: widget.fontSize,
-                    ),
+    final appColorTheme = Theme.of(context).extension<AppColorTheme>()!;
+    final appTextTheme = Theme.of(context).extension<AppTextTheme>()!;
+
+    return TapEffect(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: widget.horizontalMargin),
+        child: Material(
+          color: widget.isDisabled
+              ? appColorTheme.gray.shade300
+              : (widget.color ?? theme.primaryColor),
+          borderRadius: BorderRadius.circular(4),
+          child: InkWell(
+            onTap: widget.isDisabled ? null : widget.onPressed,
+            borderRadius: BorderRadius.circular(4),
+            child: Container(
+              padding: widget.padding ??
+                  EdgeInsets.symmetric(
+                    vertical: widget.verticalPadding,
+                    horizontal: widget.horizontalPadding,
                   ),
-                  if (widget.icon != null)
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4.wp),
-                      child: Icon(
-                        widget.icon,
-                        color: Colors.white,
-                        size: 22,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  color: widget.isDisabled
+                      ? appColorTheme.gray.shade300
+                      : (widget.color ?? theme.primaryColor),
+                ),
+              ),
+              child: Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: appTextTheme.button.copyWith(
+                        fontWeight: widget.fontWeight,
+                        color: widget.isDisabled
+                            ? appColorTheme.gray.shade700
+                            : widget.textColor,
+                        fontSize: widget.fontSize,
                       ),
                     ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 350),
-                    switchInCurve: Curves.easeOut,
-                    switchOutCurve: Curves.easeOut,
-                    child: widget.isLoading
-                        ? Container(
-                            height: 14,
-                            width: 14,
-                            margin: const EdgeInsets.only(left: 8),
-                            child: const CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Container(),
-                  ),
-                ],
+                    if (widget.icon != null)
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8.wp),
+                        margin: EdgeInsets.only(top: 1.hp),
+                        child: Icon(
+                          widget.icon,
+                          color: widget.iconColor ?? appColorTheme.gray.shade50,
+                          size: widget.fontSize,
+                        ),
+                      ),
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 350),
+                      switchInCurve: Curves.easeOut,
+                      switchOutCurve: Curves.easeOut,
+                      child: widget.isLoading
+                          ? Container(
+                              height: 14,
+                              width: 14,
+                              margin: const EdgeInsets.only(left: 8),
+                              child: CircularProgressIndicator(
+                                color: appColorTheme.gray.shade50,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : Container(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

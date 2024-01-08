@@ -33,9 +33,7 @@ class _MyAppDevelopmentState extends State<MyAppDevelopment> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: LocaleKeys.appName.tr(),
-      theme: ThemeData(
-        primarySwatch: CustomTheme.primaryColor,
-      ),
+      theme: CustomTheme.lightTheme,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

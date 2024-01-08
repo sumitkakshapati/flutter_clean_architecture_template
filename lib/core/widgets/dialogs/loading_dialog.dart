@@ -2,7 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_template/core/constants/locale_keys.dart';
-import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
+import 'package:flutter_clean_architecture_template/core/theme/app_color_theme.dart';
+import 'package:flutter_clean_architecture_template/core/theme/app_text_theme.dart';
 import 'package:flutter_clean_architecture_template/core/utils/size_utils.dart';
 
 showLoadingDialog(BuildContext context) {
@@ -18,9 +19,8 @@ class _LoadingDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-
+    final appColorTheme = Theme.of(context).extension<AppColorTheme>()!;
+    final appTextTheme = Theme.of(context).extension<AppTextTheme>()!;
     return PopScope(
       canPop: false,
       child: Dialog(
@@ -30,15 +30,13 @@ class _LoadingDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               CupertinoActivityIndicator(
-                color: CustomTheme.primaryColor,
+                color: appColorTheme.primary,
                 radius: 16,
               ),
               SizedBox(height: 14.hp),
               Text(
                 LocaleKeys.loading.tr(),
-                style: textTheme.titleMedium!.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
+                style: appTextTheme.bodyNormalMedium,
               ),
             ],
           ),
