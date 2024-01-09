@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture_template/core/bloc/common_state.dart';
 import 'package:flutter_clean_architecture_template/core/constants/locale_keys.dart';
+import 'package:flutter_clean_architecture_template/core/enum/text_field_type.dart';
+import 'package:flutter_clean_architecture_template/core/forms/common_form_attributes.dart';
 import 'package:flutter_clean_architecture_template/core/routes/routes.dart';
 import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
 import 'package:flutter_clean_architecture_template/core/utils/form_validator.dart';
 import 'package:flutter_clean_architecture_template/core/utils/snackbar_utils.dart';
 import 'package:flutter_clean_architecture_template/core/widgets/button/custom_rounded_button.dart';
-import 'package:flutter_clean_architecture_template/core/widgets/text_fields/custom_text_field.dart';
 import 'package:flutter_clean_architecture_template/core/wrapper/bloc_listener_wrapper.dart';
 import 'package:flutter_clean_architecture_template/features/auth/domain/entities/param/login_param.dart';
 import 'package:flutter_clean_architecture_template/features/auth/domain/entities/user.dart';
 import 'package:flutter_clean_architecture_template/features/auth/presentation/cubit/login_cubit.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -22,9 +24,29 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  List<CommonFormAttributes> _forms = [];
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey();
+
+  @override
+  void initState() {
+    _forms = [
+      TextFieldFormAttribute(
+        label: LocaleKeys.email.tr(),
+        hintText: LocaleKeys.email.tr(),
+        fieldName: "email",
+        keyboardType: TextInputType.emailAddress,
+        validator: FormValidator.validateEmail,
+      ),
+      TextFieldFormAttribute(
+        label: LocaleKeys.password.tr(),
+        hintText: LocaleKeys.password.tr(),
+        fieldName: "password",
+        textFieldType: TextFieldType.Password,
+        validator: FormValidator.validatePassword,
+      ),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,37 +69,21 @@ class _LoginBodyState extends State<LoginBody> {
               );
             }
           },
-          child: Form(
+          child: FormBuilder(
             key: _formKey,
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                CustomTextField(
-                  label: LocaleKeys.email.tr(),
-                  hintText: LocaleKeys.email.tr(),
-                  controller: _emailController,
-                  textInputType: TextInputType.emailAddress,
-                  validator: (value) {
-                    return FormValidator.validateEmail(value);
-                  },
-                ),
-                CustomTextField(
-                  label: LocaleKeys.password.tr(),
-                  hintText: LocaleKeys.password.tr(),
-                  controller: _passwordController,
-                  obscureText: true,
-                  validator: (value) {
-                    return FormValidator.validatePassword(value);
-                  },
-                ),
+                ..._forms.build(),
                 CustomRoundedButtom(
                   title: LocaleKeys.login.tr().toUpperCase(),
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.saveAndValidate()) {
                       context.read<LoginCubit>().login(
                             LoginParam(
-                              email: _emailController.text,
-                              password: _passwordController.text,
+                              email: _formKey.currentState!.value["email"],
+                              password:
+                                  _formKey.currentState!.value["password"],
                             ),
                           );
                     }

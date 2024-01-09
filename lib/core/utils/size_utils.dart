@@ -48,3 +48,33 @@ extension SizeExtension on num {
     return (this * SizeUtils._currentHeight) / 100;
   }
 }
+
+extension ViewPadding on BuildContext {
+  double get topViewPadding {
+    return MediaQuery.of(this).viewPadding.top;
+  }
+
+  double get topInsetsPadding {
+    return MediaQuery.of(this).viewInsets.top;
+  }
+
+  double get bottomViewPadding {
+    return MediaQuery.of(this).viewPadding.bottom;
+  }
+
+  double get bottomInsetsPadding {
+    return MediaQuery.of(this).viewInsets.bottom;
+  }
+
+  double get bottomPadding {
+    return MediaQuery.of(this).padding.bottom;
+  }
+
+  double get width {
+    return MediaQuery.of(this).size.width;
+  }
+
+  double get height {
+    return MediaQuery.of(this).size.height;
+  }
+}

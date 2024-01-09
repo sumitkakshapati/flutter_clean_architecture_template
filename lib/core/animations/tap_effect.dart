@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class TapEffect extends StatefulWidget {
   final Widget child;
   final double scaleDown;
-  const TapEffect({super.key, required this.child, this.scaleDown = 0.9});
+  final bool enable;
+  const TapEffect({
+    super.key,
+    required this.child,
+    this.scaleDown = 0.9,
+    this.enable = true,
+  });
 
   @override
   State<TapEffect> createState() => _TapEffectState();
@@ -36,13 +42,13 @@ class _TapEffectState extends State<TapEffect>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapUp: (details) {
-        _animationController.reverse();
+        if (widget.enable) _animationController.reverse();
       },
       onTapCancel: () {
-        _animationController.reverse();
+        if (widget.enable) _animationController.reverse();
       },
       onTapDown: (details) {
-        _animationController.forward();
+        if (widget.enable) _animationController.forward();
       },
       child: ScaleTransition(
         scale: _animation,

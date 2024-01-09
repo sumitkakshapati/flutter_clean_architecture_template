@@ -44,6 +44,7 @@ dependencies:
   shimmer: ^3.0.0
   animations: ^2.0.11
   page_transition: ^2.1.0
+  flutter_svg: ^2.0.9 
 
   # Storage
   hive_flutter: ^1.1.0
@@ -73,14 +74,21 @@ dependencies:
   #Permissions
   permission_handler: ^11.1.0
 
-  #Fonts
-  google_fonts: ^6.1.0
-
   #Localization
   easy_localization: ^3.0.3
 
+  #Form
+  flutter_form_builder: ^9.1.1
+
   #Logs
   logger: ^2.0.2+1
+  
+
+  # Utils
+  file_picker: ^6.1.1
+  image_picker: ^1.0.7
+  path_provider: ^2.1.1
+  android_path_provider: ^0.3.0
 
 dev_dependencies:
   flutter_test:

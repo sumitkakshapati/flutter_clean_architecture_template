@@ -13,7 +13,7 @@
         "loggedOutSuccessfully": "Logged Out Successfully"
     },
     "validationMessage": {
-        "pleaseEnterValidField": "Please eneter valid {}",
+        "pleaseEnterValidField": "Please enter valid {}",
         "fieldCannotBeEmpty": "{} field cannot be empty",
         "invalidPasswordMessage": "Make sure your {} must be atLeast {} letters long.",
         "doesnotMatch": "{} doesnot match",

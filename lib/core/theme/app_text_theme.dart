@@ -155,10 +155,10 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
         color: AppColors.grey.shade700,
       ),
       formInput: TextStyle(
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: FontWeight.w400,
         height: 1.5,
-        color: AppColors.grey.shade400,
+        color: AppColors.grey.shade900,
       ),
       formhelper: TextStyle(
         fontSize: 12,

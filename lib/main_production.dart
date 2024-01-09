@@ -6,6 +6,7 @@ import 'package:flutter_clean_architecture_template/core/database/database_servi
 import 'package:flutter_clean_architecture_template/core/injector/injection.dart';
 import 'package:flutter_clean_architecture_template/core/routes/route_generator.dart';
 import 'package:flutter_clean_architecture_template/core/routes/routes.dart';
+import 'package:flutter_clean_architecture_template/core/services/navigation_services.dart';
 import 'package:flutter_clean_architecture_template/core/theme/custom_theme.dart';
 import 'package:flutter_clean_architecture_template/core/wrapper/localization_wrapper.dart';
 
@@ -31,14 +32,20 @@ class MyAppProduction extends StatefulWidget {
 class _MyAppProductionState extends State<MyAppProduction> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: LocaleKeys.appName.tr(),
-      theme: CustomTheme.lightTheme,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      onGenerateRoute: RouteGenerator.routeGenerator,
-      initialRoute: Routes.splash,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(NavigationService.context).unfocus();
+      },
+      child: MaterialApp(
+        title: LocaleKeys.appName.tr(),
+        theme: CustomTheme.lightTheme,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        navigatorKey: NavigationService.navigationKey,
+        onGenerateRoute: RouteGenerator.routeGenerator,
+        initialRoute: Routes.splash,
+      ),
     );
   }
 
